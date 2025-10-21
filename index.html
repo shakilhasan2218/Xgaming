@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XGaming - প্রিমিয়াম গেমিং প্ল্যাটফর্ম</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --accent: #e74c3c;
+            --dark: #0f0f23;
+            --darker: #0a0a1a;
+            --text: #ffffff;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: var(--dark); 
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Language Switch */
+        .language-switch {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .lang-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary), #2980b9);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        .logo { 
+            font-size: 1.8rem; 
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .balance {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--darker), #1a1a2e);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 80px;
+        }
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Payment Section */
+        .payment-section {
+            padding: 3rem 2rem;
+            background: var(--darker);
+            text-align: center;
+        }
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .payment-method {
+            background: #1a1a2e;
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid var(--primary);
+            min-width: 300px;
+        }
+
+        /* Games Section */
+        .games-section {
+            padding: 5rem 2rem;
+            background: var(--dark);
+        }
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .game-card {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 2px solid var(--primary);
+            transition: all 0.3s;
+            position: relative;
+        }
+        .game-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+        }
+        .game-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin: 5px;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--secondary), #27ae60);
+            color: white;
+        }
+        .btn-secondary {
+            background: var(--primary);
+            color: white;
+        }
+        .btn-danger {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            padding: 3rem;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            border: 3px solid var(--primary);
+        }
+
+        /* User Profile */
+        .profile-section {
+            padding: 2rem;
+            background: var(--darker);
+            margin: 2rem auto;
+            max-width: 800px;
+            border-radius: 15px;
+        }
+        .avatar-upload {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid var(--primary);
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Switch -->
+    <div class="language-switch">
+        <button class="lang-btn" onclick="switchLanguage('en')">EN</button>
+        <button class="lang-btn" onclick="switchLanguage('bn')">বাংলা</button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🎮 XGaming</div>
+            <div class="user-menu" id="userMenu">
+                <div class="balance" id="userBalance">Balance: ৳0</div>
+                <button class="btn btn-secondary" onclick="showLoginModal()" id="loginBtn">Login</button>
+                <button class="btn btn-primary" onclick="showRegisterModal()" id="registerBtn">Register</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 id="heroTitle">WELCOME TO XGAMING</h1>
+            <p id="heroSubtitle" style="font-size: 1.3rem; margin-bottom: 2rem; opacity: 0.9;">
+                Premium Gaming Experience • 100+ Games • Live Casino
+            </p>
+            <button class="btn btn-primary" onclick="showPaymentModal()" style="padding: 15px 40px; font-size: 1.2rem;">
+                <span id="depositText">💳 DEPOSIT NOW</span>
+            </button>
+            <button class="btn btn-secondary" onclick="scrollToGames()" style="margin-left: 1rem;">
+                <span id="playText">🎮 PLAY GAMES</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Payment Methods -->
+    <section class="payment-section">
+        <h2 id="paymentTitle" style="font-size: 2.5rem; margin-bottom: 1rem;">Payment Methods</h2>
+        <p id="paymentSubtitle" style="opacity: 0.8; margin-bottom: 2rem;">Fast and Secure Deposits & Withdrawals</p>
+        <div class="payment-methods">
+            <div class="payment-method">
+                <h3>📱 bKash</h3>
+                <p>Send money to: <strong>017XXXXXXXX</strong></p>
+                <button class="btn btn-primary" onclick="showBkashModal()">Deposit via bKash</button>
+            </div>
+            <div class="payment-method">
+                <h3>🚀 Rocket</h3>
+                <p>Send money to: <strong>017XXXXXXXX</strong></p>
+                <button class="btn btn-primary" onclick="showRocketModal()">Deposit via Rocket</button>
+            </div>
+            <div class="payment-method">
+                <h3>🎯 Nagad</h3>
+                <p>Send money to: <strong>017XXXXXXXX</strong></p>
+                <button class="btn btn-primary" onclick="showNagadModal()">Deposit via Nagad</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section class="games-section" id="gamesSection">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <h2 id="gamesTitle" style="font-size: 3rem; text-align: center; margin-bottom: 3rem; color: var(--primary);">
+                🎯 FEATURED GAMES
+            </h2>
+            <div class="games-grid" id="gamesGrid">
+                <!-- Games will load here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- User Profile Section -->
+    <section class="profile-section" id="profileSection" style="display: none;">
+        <div class="avatar-upload">
+            <img src="https://via.placeholder.com/100" alt="Avatar" class="avatar" id="userAvatar">
+            <br>
+            <input type="file" id="avatarInput" accept="image/*" onchange="uploadAvatar()">
+        </div>
+        <h3 id="profileTitle">User Profile</h3>
+        <div id="userProfileInfo">
+            <!-- Profile info will load here -->
+        </div>
+        <button class="btn btn-danger" onclick="logout()">Logout</button>
+    </section>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <h3 id="loginTitle">Login to XGaming</h3>
+            <input type="email" id="loginEmail" placeholder="Email" style="width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid #ddd;">
+            <input type="password" id="loginPassword" placeholder="Password" style="width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid #ddd;">
+            <button class="btn btn-primary" onclick="login()" style="width: 100%;">Login</button>
+            <button class="btn btn-secondary" onclick="closeModal('loginModal')" style="width: 100%; margin-top: 10px;">Cancel</button>
+        </div>
+    </div>
+
+    <!-- bKash Payment Modal -->
+    <div class="modal" id="bkashModal">
+        <div class="modal-content">
+            <h3>Deposit via bKash</h3>
+            <p>Send money to: <strong>017XXXXXXXX</strong></p>
+            <input type="number" id="bkashAmount" placeholder="Amount (৳)" style="width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px;">
+            <input type="text" id="bkashNumber" placeholder="Your bKash Number" style="width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px;">
+            <input type="text" id="bkashTrxId" placeholder="Transaction ID" style="width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px;">
+            <button class="btn btn-primary" onclick="processBkashPayment()">Confirm Deposit</button>
+            <button class="btn btn-secondary" onclick="closeModal('bkashModal')">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        // ==================== MULTI-LANGUAGE SUPPORT ====================
+        const translations = {
+            en: {
+                heroTitle: "WELCOME TO XGAMING",
+                heroSubtitle: "Premium Gaming Experience • 100+ Games • Live Casino",
+                depositText: "💳 DEPOSIT NOW",
+                playText: "🎮 PLAY GAMES",
+                paymentTitle: "Payment Methods",
+                paymentSubtitle: "Fast and Secure Deposits & Withdrawals",
+                gamesTitle: "🎯 FEATURED GAMES",
+                loginTitle: "Login to XGaming",
+                registerTitle: "Create Account",
+                profileTitle: "User Profile"
+            },
+            bn: {
+                heroTitle: "এক্সগেমিংয়ে স্বাগতম",
+                heroSubtitle: "প্রিমিয়াম গেমিং অভিজ্ঞতা • ১০০+ গেম • লাইভ ক্যাসিনো",
+                depositText: "💳 এখনই ডিপোজিট করুন",
+                playText: "🎮 গেম খেলুন",
+                paymentTitle: "পেমেন্ট মাধ্যম",
+                paymentSubtitle: "দ্রুত এবং নিরাপদ ডিপোজিট ও উত্তোলন",
+                gamesTitle: "🎯 জনপ্রিয় গেমস",
+                loginTitle: "এক্সগেমিং-এ লগইন করুন",
+                registerTitle: "অ্যাকাউন্ট তৈরি করুন",
+                profileTitle: "ব্যবহারকারী প্রোফাইল"
+            }
+        };
+
+        let currentLanguage = 'en';
+        let currentUser = null;
+        let userBalance = 0;
+
+        // ==================== GAMES DATA ====================
+        const games = [
+            {
+                id: 1,
+                name: "SWEET BONANZA",
+                nameBn: "সুইট বোনান্জা",
+                type: "SLOT",
+                provider: "Pragmatic Play",
+                rating: 4.8,
+                demoUrl: "https://www.pragmaticplay.com/en/games/sweet-bonanza/",
+                minBet: 10
+            },
+            {
+                id: 2,
+                name: "GATES OF OLYMPUS", 
+                nameBn: "গেটস অফ অলিম্পাস",
+                type: "SLOT",
+                provider: "Pragmatic Play", 
+                rating: 4.9,
+                demoUrl: "https://www.pragmaticplay.com/en/gates-of-olympus/",
+                minBet: 20
+            },
+            {
+                id: 3,
+                name: "BLACKJACK",
+                nameBn: "ব্ল্যাকজ্যাক",
+                type: "TABLE GAME", 
+                provider: "Evolution",
+                rating: 4.6,
+                demoUrl: "https://www.evolution.com/games/blackjack/",
+                minBet: 50
+            },
+            {
+                id: 4,
+                name: "ROULETTE",
+                nameBn: "রুলেট",
+                type: "TABLE GAME",
+                provider: "Evolution",
+                rating: 4.7,
+                demoUrl: "https://www.evolution.com/games/roulette/",
+                minBet: 30
+            }
+        ];
+
+        // ==================== INITIALIZATION ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            loadUserData();
+            loadGames();
+            updateUI();
+        });
+
+        // ==================== LANGUAGE SYSTEM ====================
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            updateUI();
+        }
+
+        function updateUI() {
+            // Update all text elements
+            document.getElementById('heroTitle').textContent = translations[currentLanguage].heroTitle;
+            document.getElementById('heroSubtitle').textContent = translations[currentLanguage].heroSubtitle;
+            document.getElementById('depositText').textContent = translations[currentLanguage].depositText;
+            document.getElementById('playText').textContent = translations[currentLanguage].playText;
+            document.getElementById('paymentTitle').textContent = translations[currentLanguage].paymentTitle;
+            document.getElementById('paymentSubtitle').textContent = translations[currentLanguage].paymentSubtitle;
+            document.getElementById('gamesTitle').textContent = translations[currentLanguage].gamesTitle;
+            document.getElementById('loginTitle').textContent = translations[currentLanguage].loginTitle;
+            
+            // Update games with language
+            loadGames();
+        }
+
+        // ==================== USER SYSTEM ====================
+        function loadUserData() {
+            const savedUser = localStorage.getItem('xgaming_user');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                userBalance = currentUser.balance || 0;
+                showUserProfile();
+            }
+        }
+
+        function showLoginModal() {
+            document.getElementById('loginModal').style.display = 'flex';
+        }
+
+        function login() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            if (email && password) {
+                currentUser = {
+                    id: Date.now(),
+                    email: email,
+                    name: email.split('@')[0],
+                    balance: 1000,
+                    joinDate: new Date().toLocaleDateString(),
+                    gameHistory: []
+                };
+                
+                localStorage.setItem('xgaming_user', JSON.stringify(currentUser));
+                userBalance = currentUser.balance;
+                showUserProfile();
+                closeModal('loginModal');
+                alert(currentLanguage === 'en' ? 'Login successful! 🎉' : 'লগইন সফল! 🎉');
+            }
+        }
+
+        function showUserProfile() {
+            document.getElementById('profileSection').style.display = 'block';
+            document.getElementById('userMenu').innerHTML = `
+                <div class="balance">Balance: ৳${userBalance}</div>
+                <button class="btn btn-secondary" onclick="showProfile()">Profile</button>
+                <button class="btn btn-danger" onclick="logout()">Logout</button>
+            `;
+            
+            document.getElementById('userProfileInfo').innerHTML = `
+                <p><strong>Name:</strong> ${currentUser.name}</p>
+                <p><strong>Email:</strong> ${currentUser.email}</p>
+                <p><strong>Balance:</strong> ৳${userBalance}</p>
+                <p><strong>Member Since:</strong> ${currentUser.joinDate}</p>
+            `;
+        }
+
+        function logout() {
+            currentUser = null;
+            userBalance = 0;
+            localStorage.removeItem('xgaming_user');
+            document.getElementById('profileSection').style.display = 'none';
+            document.getElementById('userMenu').innerHTML = `
+                <div class="balance">Balance: ৳0</div>
+                <button class="btn btn-secondary" onclick="showLoginModal()">Login</button>
+                <button class="btn btn-primary" onclick="showRegisterModal()">Register</button>
+            `;
+        }
+
+        // ==================== PAYMENT SYSTEM ====================
+        function showPaymentModal() {
+            if (!currentUser) {
+                alert(currentLanguage === 'en' ? 'Please login first!' : 'দয়া করে প্রথমে লগইন করুন!');
+                showLoginModal();
+                return;
+            }
+            // Show payment options
+        }
+
+        function showBkashModal() {
+            document.getElementById('bkashModal').style.display = 'flex';
+        }
+
+        function processBkashPayment() {
+            const amount = parseInt(document.getElementById('bkashAmount').value);
+            const number = document.getElementById('bkashNumber').value;
+            const trxId = document.getElementById('bkashTrxId').value;
+            
+            if (amount && number && trxId) {
+                userBalance += amount;
+                currentUser.balance = userBalance;
+                localStorage.setItem('xgaming_user', JSON.stringify(currentUser));
+                
+                // Add to game history
+                if (!currentUser.gameHistory) currentUser.gameHistory = [];
+                currentUser.gameHistory.push({
+                    type: 'deposit',
+                    amount: amount,
+                    method: 'bKash',
+                    date: new Date().toLocaleString(),
+                    trxId: trxId
+                });
+                
+                closeModal('bkashModal');
+                showUserProfile();
+                alert(currentLanguage === 'en' 
+                    ? `Deposit successful! New balance: ৳${userBalance}` 
+                    : `ডিপোজিট সফল! নতুন ব্যালেন্স: ৳${userBalance}`);
+            }
+        }
+
+        // ==================== GAME SYSTEM ====================
+        function loadGames() {
+            const grid = document.getElementById('gamesGrid');
+            grid.innerHTML = games.map(game => `
+                <div class="game-card">
+                    <div class="game-badge">${game.provider}</div>
+                    <h3>${currentLanguage === 'en' ? game.name : game.nameBn}</h3>
+                    <p>${game.type} • ⭐ ${game.rating}</p>
+                    <p>${currentLanguage === 'en' ? 'Min Bet:' : 'ন্যূনতম বেট:'} ৳${game.minBet}</p>
+                    <button class="btn btn-primary" onclick="playGame(${game.id})">
+                        ${currentLanguage === 'en' ? '🎮 PLAY NOW' : '🎮 এখনই খেলুন'}
+                    </button>
+                    <button class="btn btn-secondary" onclick="showGameInfo(${game.id})">
+                        ${currentLanguage === 'en' ? 'ℹ️ INFO' : 'ℹ️ বিস্তারিত'}
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function playGame(gameId) {
+            if (!currentUser) {
+                alert(currentLanguage === 'en' ? 'Please login to play!' : 'খেলতে দয়া করে লগইন করুন!');
+                showLoginModal();
+                return;
+            }
+            
+            const game = games.find(g => g.id === gameId);
+            if (userBalance < game.minBet) {
+                alert(currentLanguage === 'en' 
+                    ? `Insufficient balance! Minimum bet: ৳${game.minBet}` 
+                    : `ব্যালেন্স অপর্যাপ্ত! ন্যূনতম বেট: ৳${game.minBet}`);
+                showPaymentModal();
+                return;
+            }
+            
+            // Deduct bet amount
+            userBalance -= game.minBet;
+            currentUser.balance = userBalance;
+            
+            // Add to game history
+            currentUser.gameHistory.push({
+                type: 'bet',
+                game: game.name,
+                amount: game.minBet,
+                date: new Date().toLocaleString(),
+                result: 'played'
+            });
+            
+            localStorage.setItem('xgaming_user', JSON.stringify(currentUser));
+            showUserProfile();
+            
+            // Launch game
+            window.open(game.demoUrl, '_blank');
+            alert(currentLanguage === 'en' 
+                ? `Playing ${game.name}! Bet: ৳${game.minBet}` 
+                : `${game.nameBn} খেলা হচ্ছে! বেট: ৳${game.minBet}`);
+        }
+
+        // ==================== UTILITY FUNCTIONS ====================
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        function scrollToGames() {
+            document.getElementById('gamesSection').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
+        function showRegisterModal() {
+            const name = prompt(currentLanguage === 'en' ? 'Enter your name:' : 'আপনার নাম লিখুন:');
+            const email = prompt(currentLanguage === 'en' ? 'Enter your email:' : 'ইমেইল লিখুন:');
+            const password = prompt(currentLanguage === 'en' ? 'Create password:' : 'পাসওয়ার্ড তৈরি করুন:');
+            
+            if (name && email && password) {
+                currentUser = {
+                    id: Date.now(),
+                    name: name,
+                    email: email,
+                    balance: 5000, // Welcome bonus
+                    joinDate: new Date().toLocaleDateString(),
+                    gameHistory: []
+                };
+                
+                localStorage.setItem('xgaming_user', JSON.stringify(currentUser));
+                userBalance = currentUser.balance;
+                showUserProfile();
+                
+                alert(currentLanguage === 'en' 
+                    ? `Welcome to XGaming, ${name}! You received ৳5000 welcome bonus!` 
+                    : `এক্সগেমিংয়ে স্বাগতম, ${name}! আপনি ৳৫০০০ ওয়েলকাম বোনাস পেয়েছেন!`);
+            }
+        }
+
+        function uploadAvatar() {
+            alert(currentLanguage === 'en' ? 'Avatar upload feature coming soon!' : 'অবতার আপলোড ফিচার শীঘ্রই আসছে!');
+        }
+
+        function showGameInfo(gameId) {
+            const game = games.find(g => g.id === gameId);
+            alert(currentLanguage === 'en' 
+                ? `${game.name}\nProvider: ${game.provider}\nType: ${game.type}\nRating: ⭐ ${game.rating}\nMin Bet: ৳${game.minBet}` 
+                : `${game.nameBn}\nপ্রদানকারী: ${game.provider}\nধরন: ${game.type}\nরেটিং: ⭐ ${game.rating}\nন্যূনতম বেট: ৳${game.minBet}`);
+        }
+    </script>
+</body>
+</html>
