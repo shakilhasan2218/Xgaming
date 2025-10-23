@@ -18,10 +18,9 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Arial', sans-serif;
             background: var(--primary);
             color: var(--text);
-            overflow-x: hidden;
         }
         
         .admin-container {
@@ -31,13 +30,9 @@
         
         /* Sidebar */
         .sidebar {
-            width: 280px;
+            width: 250px;
             background: var(--secondary);
             padding: 2rem 1rem;
-            box-shadow: 2px 0 10px rgba(0,0,0,0.3);
-            position: fixed;
-            height: 100vh;
-            overflow-y: auto;
         }
         
         .sidebar-header {
@@ -49,7 +44,6 @@
         
         .sidebar-header h2 {
             color: var(--accent);
-            font-size: 1.5rem;
         }
         
         .sidebar-menu {
@@ -63,24 +57,19 @@
         .sidebar-menu a {
             color: var(--text);
             text-decoration: none;
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            border-radius: 8px;
-            transition: all 0.3s;
-            font-weight: 500;
+            padding: 12px 15px;
+            display: block;
+            border-radius: 5px;
+            transition: background 0.3s;
         }
         
         .sidebar-menu a:hover, .sidebar-menu a.active {
             background: var(--accent);
-            transform: translateX(5px);
         }
         
         /* Main Content */
         .main-content {
             flex: 1;
-            margin-left: 280px;
             padding: 2rem;
             background: #1a2530;
         }
@@ -96,153 +85,72 @@
         
         .header h1 {
             color: var(--accent);
-            font-size: 2.2rem;
-        }
-        
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .user-avatar {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: var(--info);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.2rem;
         }
         
         /* Stats Grid */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1.5rem;
             margin-bottom: 2rem;
         }
         
         .stat-card {
-            background: linear-gradient(135deg, var(--secondary), #2c3e50);
-            padding: 2rem;
-            border-radius: 15px;
+            background: var(--secondary);
+            padding: 1.5rem;
+            border-radius: 10px;
             text-align: center;
-            border-left: 5px solid var(--accent);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transition: transform 0.3s;
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-5px);
         }
         
         .stat-card h3 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: var(--accent);
             margin-bottom: 0.5rem;
         }
         
-        .stat-card p {
-            color: #bdc3c7;
-            font-size: 0.9rem;
-        }
-        
-        .stat-card.primary { border-left-color: var(--info); }
-        .stat-card.success { border-left-color: var(--success); }
-        .stat-card.warning { border-left-color: var(--warning); }
-        .stat-card.danger { border-left-color: var(--accent); }
-        
         /* Content Sections */
         .content-section {
             background: var(--secondary);
-            padding: 2.5rem;
-            border-radius: 15px;
+            padding: 2rem;
+            border-radius: 10px;
             margin-bottom: 2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
-        .section-header {
-            display: flex;
-            justify-content: between;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-        
-        .section-header h2 {
-            color: var(--accent);
-            font-size: 1.8rem;
         }
         
         /* Forms */
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
         
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 600;
-            color: #bdc3c7;
         }
         
-        .form-group input, .form-group select, .form-group textarea {
+        .form-group input, .form-group select {
             width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #4a5f7a;
-            border-radius: 8px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
             background: #2c3e50;
             color: var(--text);
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-        
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            border-color: var(--info);
-            outline: none;
         }
         
         /* Buttons */
         .btn {
-            padding: 12px 25px;
+            padding: 10px 20px;
             border: none;
-            border-radius: 8px;
+            border-radius: 5px;
             cursor: pointer;
             font-weight: 600;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.9rem;
+            margin: 5px;
         }
         
         .btn-primary { background: var(--info); color: white; }
         .btn-success { background: var(--success); color: white; }
-        .btn-warning { background: var(--warning); color: white; }
         .btn-danger { background: var(--accent); color: white; }
-        .btn-secondary { background: #95a5a6; color: white; }
-        
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
         
         /* Tables */
-        .table-container {
-            overflow-x: auto;
-            border-radius: 10px;
-            background: #2c3e50;
-        }
-        
         table {
             width: 100%;
             border-collapse: collapse;
@@ -250,105 +158,13 @@
         }
         
         th, td {
-            padding: 15px;
+            padding: 12px;
             text-align: left;
-            border-bottom: 1px solid #4a5f7a;
+            border-bottom: 1px solid #ddd;
         }
         
         th {
             background: var(--primary);
-            color: var(--accent);
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-        }
-        
-        tr:hover {
-            background: rgba(52, 152, 219, 0.1);
-        }
-        
-        /* Charts */
-        .chart-container {
-            background: #2c3e50;
-            padding: 2rem;
-            border-radius: 10px;
-            margin-top: 1rem;
-        }
-        
-        .chart-placeholder {
-            height: 300px;
-            background: linear-gradient(45deg, #34495e, #2c3e50);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #bdc3c7;
-            font-size: 1.1rem;
-        }
-        
-        /* Tabs */
-        .tabs {
-            display: flex;
-            margin-bottom: 2rem;
-            border-bottom: 2px solid #4a5f7a;
-        }
-        
-        .tab {
-            padding: 12px 25px;
-            background: none;
-            border: none;
-            color: #bdc3c7;
-            cursor: pointer;
-            font-weight: 600;
-            border-bottom: 3px solid transparent;
-            transition: all 0.3s;
-        }
-        
-        .tab.active {
-            color: var(--accent);
-            border-bottom-color: var(--accent);
-        }
-        
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 3000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal-content {
-            background: var(--secondary);
-            padding: 3rem;
-            border-radius: 15px;
-            max-width: 600px;
-            width: 90%;
-            border: 3px solid var(--accent);
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-            }
-            
-            .main-content {
-                margin-left: 0;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
@@ -358,212 +174,172 @@
         <div class="sidebar">
             <div class="sidebar-header">
                 <h2>🎮 XGaming Admin</h2>
-                <p style="color: #bdc3c7; font-size: 0.9rem;">Advanced Control Panel</p>
             </div>
             
             <ul class="sidebar-menu">
                 <li><a href="#dashboard" class="active">📊 ড্যাশবোর্ড</a></li>
                 <li><a href="#games">🎮 গেম ম্যানেজমেন্ট</a></li>
-                <li><a href="#users">👥 ব্যবহারকারী ব্যবস্থাপনা</a></li>
-                <li><a href="#payments">💰 পেমেন্ট ব্যবস্থাপনা</a></li>
-                <li><a href="#reports">📈 রিপোর্টস ও এনালিটিক্স</a></li>
-                <li><a href="#settings">⚙️ সেটিংস</a></li>
-                <li><a href="#support">🛟 সাপোর্ট</a></li>
-                <li><a href="../index.html" style="background: var(--success);">🏠 মেইন সাইট</a></li>
+                <li><a href="#users">👥 ব্যবহারকারী</a></li>
+                <li><a href="#payments">💰 পেমেন্ট</a></li>
+                <li><a href="../index.html">🏠 মেইন সাইট</a></li>
             </ul>
-            
-            <div style="margin-top: 3rem; padding: 1rem; background: rgba(0,0,0,0.3); border-radius: 10px;">
-                <p style="font-size: 0.8rem; color: #bdc3c7; text-align: center;">
-                    🔒 Secure Admin Panel<br>
-                    Version 2.0.0
-                </p>
-            </div>
         </div>
 
         <!-- Main Content -->
         <div class="main-content">
             <!-- Header -->
             <div class="header">
-                <h1 id="pageTitle">এডমিন ড্যাশবোর্ড</h1>
-                <div class="user-info">
-                    <div class="user-avatar">A</div>
-                    <div>
-                        <div style="font-weight: bold;">এডমিন ইউজার</div>
-                        <div style="font-size: 0.8rem; color: #bdc3c7;">Super Admin</div>
-                    </div>
-                    <button class="btn btn-danger" onclick="logout()">🚪 লগআউট</button>
-                </div>
+                <h1>এডমিন ড্যাশবোর্ড</h1>
+                <button class="btn btn-danger" onclick="logout()">লগআউট</button>
             </div>
 
-            <!-- Dashboard Section -->
+            <!-- Dashboard -->
             <div id="dashboard" class="content-section">
-                <div class="section-header">
-                    <h2>সিস্টেম ওভারভিউ</h2>
-                    <button class="btn btn-primary" onclick="refreshStats()">🔄 রিফ্রেশ</button>
-                </div>
+                <h2>সিস্টেম ওভারভিউ</h2>
 
                 <!-- Stats Grid -->
                 <div class="stats-grid">
-                    <div class="stat-card primary">
+                    <div class="stat-card">
                         <h3 id="totalUsers">1,247</h3>
                         <p>মোট ব্যবহারকারী</p>
-                        <small>+12% from last week</small>
                     </div>
-                    <div class="stat-card success">
+                    <div class="stat-card">
                         <h3 id="totalGames">156</h3>
                         <p>সক্রিয় গেমস</p>
-                        <small>24 new this month</small>
                     </div>
-                    <div class="stat-card warning">
+                    <div class="stat-card">
                         <h3 id="totalRevenue">৳2,45,670</h3>
                         <p>মোট আয়</p>
-                        <small>+18% from last month</small>
                     </div>
-                    <div class="stat-card danger">
+                    <div class="stat-card">
                         <h3 id="activePlayers">89</h3>
                         <p>সক্রিয় খেলোয়াড়</p>
-                        <small>Playing right now</small>
-                    </div>
-                </div>
-
-                <!-- Charts -->
-                <div class="section-header">
-                    <h2>আয় বিশ্লেষণ</h2>
-                    <div>
-                        <button class="btn btn-secondary" onclick="viewDailyReport()">দৈনিক</button>
-                        <button class="btn btn-secondary" onclick="viewWeeklyReport()">সাপ্তাহিক</button>
-                        <button class="btn btn-primary" onclick="viewMonthlyReport()">মাসিক</button>
-                    </div>
-                </div>
-                
-                <div class="chart-container">
-                    <div class="chart-placeholder">
-                        📊 আয়ের চার্ট - Last 30 Days
-                        <br>
-                        <small style="font-size: 0.8rem;">(Real chart would connect to backend API)</small>
                     </div>
                 </div>
 
                 <!-- Recent Activity -->
-                <div class="section-header" style="margin-top: 3rem;">
-                    <h2>সাম্প্রতিক কার্যকলাপ</h2>
-                </div>
-                
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>সময়</th>
-                                <th>কার্যকলাপ</th>
-                                <th>ব্যবহারকারী</th>
-                                <th>বিস্তারিত</th>
-                            </tr>
-                        </thead>
-                        <tbody id="recentActivity">
-                            <tr>
-                                <td>2 min ago</td>
-                                <td>🎮 Game Played</td>
-                                <td>shakil_2218</td>
-                                <td>Sweet Bonanza - Bet: ৳100</td>
-                            </tr>
-                            <tr>
-                                <td>5 min ago</td>
-                                <td>💳 Deposit</td>
-                                <td>john_doe</td>
-                                <td>bKash - Amount: ৳5,000</td>
-                            </tr>
-                            <tr>
-                                <td>15 min ago</td>
-                                <td>👤 Registration</td>
-                                <td>new_user_92</td>
-                                <td>New user registered</td>
-                            </tr>
-                            <tr>
-                                <td>1 hour ago</td>
-                                <td>🎯 Withdrawal</td>
-                                <td>mike_j</td>
-                                <td>Rocket - Amount: ৳2,000</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <h3>সাম্প্রতিক কার্যকলাপ</h3>
+                <div id="recentActivity">
+                    <p>• নতুন ব্যবহারকারী: shakil_2218</p>
+                    <p>• গেম যোগ করা হয়েছে: Mega Fortune</p>
+                    <p>• ডিপোজিট সম্পন্ন: ৳5,000</p>
+                    <p>• উত্তোলন প্রক্রিয়াকরণ: ৳2,000</p>
                 </div>
             </div>
 
-            <!-- Game Management Section -->
+            <!-- Game Management -->
             <div id="games" class="content-section" style="display: none;">
-                <div class="section-header">
-                    <h2>গেম ব্যবস্থাপনা</h2>
-                    <button class="btn btn-success" onclick="showAddGameModal()">➕ নতুন গেম যোগ করুন</button>
-                </div>
-
-                <!-- Game Tabs -->
-                <div class="tabs">
-                    <button class="tab active" onclick="showGameTab('all')">সব গেমস</button>
-                    <button class="tab" onclick="showGameTab('slots')">স্লট গেমস</button>
-                    <button class="tab" onclick="showGameTab('table')">টেবিল গেমস</button>
-                    <button class="tab" onclick="showGameTab('live')">লাইভ ক্যাসিনো</button>
+                <h2>গেম ব্যবস্থাপনা</h2>
+                
+                <!-- Add Game Form -->
+                <div style="background: var(--primary); padding: 1.5rem; border-radius: 10px; margin-bottom: 2rem;">
+                    <h3>নতুন গেম যোগ করুন</h3>
+                    <form id="addGameForm">
+                        <div class="form-group">
+                            <label>গেম নাম</label>
+                            <input type="text" id="gameName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>গেম ধরন</label>
+                            <select id="gameType" required>
+                                <option value="">নির্বাচন করুন</option>
+                                <option value="SLOT">স্লট গেম</option>
+                                <option value="TABLE">টেবিল গেম</option>
+                                <option value="LIVE">লাইভ ক্যাসিনো</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>প্রদানকারী</label>
+                            <input type="text" id="gameProvider" required>
+                        </div>
+                        <div class="form-group">
+                            <label>ডেমো URL</label>
+                            <input type="url" id="gameDemoUrl" required>
+                        </div>
+                        <button type="submit" class="btn btn-success">গেম যোগ করুন</button>
+                    </form>
                 </div>
 
                 <!-- Games List -->
-                <div class="table-container">
+                <h3>সকল গেমস</h3>
+                <div id="gamesList">
                     <table>
                         <thead>
                             <tr>
                                 <th>গেম নাম</th>
                                 <th>ধরন</th>
                                 <th>প্রদানকারী</th>
-                                <th>ন্যূনতম বেট</th>
-                                <th>রেটিং</th>
-                                <th>স্ট্যাটাস</th>
                                 <th>কার্যক্রম</th>
                             </tr>
                         </thead>
-                        <tbody id="gamesList">
-                            <!-- Games will be loaded here -->
+                        <tbody>
+                            <tr>
+                                <td>Sweet Bonanza</td>
+                                <td>SLOT</td>
+                                <td>Pragmatic Play</td>
+                                <td>
+                                    <button class="btn btn-primary">Edit</button>
+                                    <button class="btn btn-danger">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Gates of Olympus</td>
+                                <td>SLOT</td>
+                                <td>Pragmatic Play</td>
+                                <td>
+                                    <button class="btn btn-primary">Edit</button>
+                                    <button class="btn btn-danger">Delete</button>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- User Management Section -->
+            <!-- User Management -->
             <div id="users" class="content-section" style="display: none;">
-                <div class="section-header">
-                    <h2>ব্যবহারকারী ব্যবস্থাপনা</h2>
-                    <button class="btn btn-primary" onclick="exportUsers()">📊 ব্যবহারকারী রিপোর্ট</button>
-                </div>
-
-                <div class="table-container">
+                <h2>ব্যবহারকারী ব্যবস্থাপনা</h2>
+                <div id="usersList">
                     <table>
                         <thead>
                             <tr>
-                                <th>আইডি</th>
                                 <th>নাম</th>
                                 <th>ইমেইল</th>
                                 <th>ব্যালেন্স</th>
-                                <th>যোগদান তারিখ</th>
                                 <th>স্ট্যাটাস</th>
                                 <th>কার্যক্রম</th>
                             </tr>
                         </thead>
-                        <tbody id="usersList">
-                            <!-- Users will be loaded here -->
+                        <tbody>
+                            <tr>
+                                <td>Shakil Hasan</td>
+                                <td>shakil@example.com</td>
+                                <td>৳5,000</td>
+                                <td>Active</td>
+                                <td>
+                                    <button class="btn btn-primary">View</button>
+                                    <button class="btn btn-danger">Block</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>John Doe</td>
+                                <td>john@example.com</td>
+                                <td>৳2,500</td>
+                                <td>Active</td>
+                                <td>
+                                    <button class="btn btn-primary">View</button>
+                                    <button class="btn btn-danger">Block</button>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- Payment Management Section -->
+            <!-- Payment Management -->
             <div id="payments" class="content-section" style="display: none;">
-                <div class="section-header">
-                    <h2>পেমেন্ট ব্যবস্থাপনা</h2>
-                    <div>
-                        <button class="btn btn-success" onclick="showAllPayments()">সব ট্রানজেকশন</button>
-                        <button class="btn btn-warning" onclick="showPendingPayments()">পেন্ডিং</button>
-                        <button class="btn btn-primary" onclick="showCompletedPayments()">সম্পন্ন</button>
-                    </div>
-                </div>
-
-                <div class="table-container">
+                <h2>পেমেন্ট ব্যবস্থাপনা</h2>
+                <div id="paymentsList">
                     <table>
                         <thead>
                             <tr>
@@ -573,78 +349,34 @@
                                 <th>পদ্ধতি</th>
                                 <th>স্ট্যাটাস</th>
                                 <th>তারিখ</th>
-                                <th>কার্যক্রম</th>
                             </tr>
                         </thead>
-                        <tbody id="paymentsList">
-                            <!-- Payments will be loaded here -->
+                        <tbody>
+                            <tr>
+                                <td>TXN001</td>
+                                <td>Shakil Hasan</td>
+                                <td>৳5,000</td>
+                                <td>bKash</td>
+                                <td>Completed</td>
+                                <td>2024-01-15</td>
+                            </tr>
+                            <tr>
+                                <td>TXN002</td>
+                                <td>John Doe</td>
+                                <td>৳2,000</td>
+                                <td>Rocket</td>
+                                <td>Completed</td>
+                                <td>2024-01-15</td>
+                            </tr>
                         </tbody>
                     </table>
-                </div>
-            </div>
-
-            <!-- Add Game Modal -->
-            <div class="modal" id="addGameModal">
-                <div class="modal-content">
-                    <h2 style="color: var(--accent); margin-bottom: 2rem;">নতুন গেম যোগ করুন</h2>
-                    
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label>গেম নাম (ইংরেজি)</label>
-                            <input type="text" id="gameName" placeholder="Enter game name">
-                        </div>
-                        <div class="form-group">
-                            <label>গেম নাম (বাংলা)</label>
-                            <input type="text" id="gameNameBn" placeholder="গেমের নাম লিখুন">
-                        </div>
-                        <div class="form-group">
-                            <label>গেম ধরন</label>
-                            <select id="gameType">
-                                <option value="">নির্বাচন করুন</option>
-                                <option value="SLOT">স্লট গেম</option>
-                                <option value="TABLE">টেবিল গেম</option>
-                                <option value="LIVE">লাইভ ক্যাসিনো</option>
-                                <option value="SPORTS">স্পোর্টস বেটিং</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>প্রদানকারী</label>
-                            <input type="text" id="gameProvider" placeholder="Provider name">
-                        </div>
-                        <div class="form-group">
-                            <label>ডেমো URL</label>
-                            <input type="url" id="gameDemoUrl" placeholder="https://example.com/game">
-                        </div>
-                        <div class="form-group">
-                            <label>ন্যূনতম বেট (৳)</label>
-                            <input type="number" id="gameMinBet" placeholder="100" min="1">
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>গেম বর্ণনা</label>
-                        <textarea id="gameDescription" rows="3" placeholder="Game description"></textarea>
-                    </div>
-                    
-                    <div style="display: flex; gap: 1rem; margin-top: 2rem;">
-                        <button class="btn btn-success" onclick="addNewGame()" style="flex: 1;">✅ গেম সংরক্ষণ করুন</button>
-                        <button class="btn btn-danger" onclick="closeModal('addGameModal')" style="flex: 1;">❌ বাতিল করুন</button>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // ==================== INITIALIZATION ====================
-        document.addEventListener('DOMContentLoaded', function() {
-            loadDashboardData();
-            loadGamesManagement();
-            loadUsersManagement();
-            loadPaymentsManagement();
-        });
-
-        // ==================== NAVIGATION ====================
+        // Navigation
         document.querySelectorAll('.sidebar-menu a').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -659,293 +391,28 @@
                     section.style.display = 'none';
                 });
                 document.getElementById(targetId).style.display = 'block';
-                
-                // Update page title
-                updatePageTitle(this.textContent.trim());
-                
-                // Load section data
-                loadSectionData(targetId);
             });
         });
 
-        function updatePageTitle(title) {
-            document.getElementById('pageTitle').textContent = title;
-        }
-
-        // ==================== DASHBOARD FUNCTIONS ====================
-        function loadDashboardData() {
-            // Simulate loading real data
-            setTimeout(() => {
-                document.getElementById('totalUsers').textContent = '1,892';
-                document.getElementById('totalGames').textContent = '167';
-                document.getElementById('totalRevenue').textContent = '৳3,12,450';
-                document.getElementById('activePlayers').textContent = '124';
-            }, 1000);
-        }
-
-        function refreshStats() {
-            alert('📊 পরিসংখ্যান আপডেট করা হচ্ছে...');
-            loadDashboardData();
-        }
-
-        function viewDailyReport() {
-            alert('📈 দৈনিক রিপোর্ট দেখানো হচ্ছে...');
-        }
-
-        function viewWeeklyReport() {
-            alert('📈 সাপ্তাহিক রিপোর্ট দেখানো হচ্ছে...');
-        }
-
-        function viewMonthlyReport() {
-            alert('📈 মাসিক রিপোর্ট দেখানো হচ্ছে...');
-        }
-
-        // ==================== GAME MANAGEMENT ====================
-        function loadGamesManagement() {
-            const games = [
-                {
-                    id: 1,
-                    name: "SWEET BONANZA",
-                    nameBn: "সুইট বোনান্জা",
-                    type: "SLOT",
-                    provider: "Pragmatic Play",
-                    minBet: 100,
-                    rating: "4.8",
-                    status: "Active"
-                },
-                {
-                    id: 2,
-                    name: "GATES OF OLYMPUS", 
-                    nameBn: "গেটস অফ অলিম্পাস",
-                    type: "SLOT",
-                    provider: "Pragmatic Play", 
-                    minBet: 200,
-                    rating: "4.9",
-                    status: "Active"
-                },
-                {
-                    id: 3,
-                    name: "BLACKJACK",
-                    nameBn: "ব্ল্যাকজ্যাক",
-                    type: "TABLE", 
-                    provider: "Evolution",
-                    minBet: 500,
-                    rating: "4.6",
-                    status: "Active"
-                },
-                {
-                    id: 4,
-                    name: "ROULETTE",
-                    nameBn: "রুলেট",
-                    type: "TABLE",
-                    provider: "Evolution",
-                    minBet: 300,
-                    rating: "4.7",
-                    status: "Maintenance"
-                }
-            ];
-
-            const gamesHtml = games.map(game => `
-                <tr>
-                    <td><strong>${game.name}</strong><br><small>${game.nameBn}</small></td>
-                    <td>${game.type}</td>
-                    <td>${game.provider}</td>
-                    <td>৳${game.minBet}</td>
-                    <td>⭐ ${game.rating}</td>
-                    <td>
-                        <span style="padding: 5px 10px; border-radius: 15px; font-size: 0.8rem; 
-                              background: ${game.status === 'Active' ? '#27ae60' : '#e74c3c'};">
-                            ${game.status}
-                        </span>
-                    </td>
-                    <td>
-                        <button class="btn btn-primary" onclick="editGame(${game.id})" style="padding: 8px 12px;">✏️</button>
-                        <button class="btn btn-warning" onclick="toggleGameStatus(${game.id})" style="padding: 8px 12px;">🔄</button>
-                        <button class="btn btn-danger" onclick="deleteGame(${game.id})" style="padding: 8px 12px;">🗑️</button>
-                    </td>
-                </tr>
-            `).join('');
-
-            document.getElementById('gamesList').innerHTML = gamesHtml;
-        }
-
-        function showGameTab(tab) {
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            event.target.classList.add('active');
-            // In real app, filter games based on tab
-            alert(`Showing ${tab} games...`);
-        }
-
-        function showAddGameModal() {
-            document.getElementById('addGameModal').style.display = 'flex';
-        }
-
-        function addNewGame() {
-            const gameData = {
-                name: document.getElementById('gameName').value,
-                nameBn: document.getElementById('gameNameBn').value,
-                type: document.getElementById('gameType').value,
-                provider: document.getElementById('gameProvider').value,
-                demoUrl: document.getElementById('gameDemoUrl').value,
-                minBet: document.getElementById('gameMinBet').value,
-                description: document.getElementById('gameDescription').value
-            };
-
-            if (gameData.name && gameData.nameBn && gameData.type) {
-                alert('✅ গেম সফলভাবে যোগ করা হয়েছে!');
-                closeModal('addGameModal');
-                // In real app, save to database and refresh list
-            } else {
-                alert('❌ দয়া করে সকল প্রয়োজনীয় তথ্য প্রদান করুন!');
-            }
-        }
-
-        function editGame(gameId) {
-            alert(`✏️ গেম ${gameId} সম্পাদনা করা হচ্ছে...`);
-        }
-
-        function toggleGameStatus(gameId) {
-            alert(`🔄 গেম ${gameId} এর স্ট্যাটাস পরিবর্তন করা হচ্ছে...`);
-        }
-
-        function deleteGame(gameId) {
-            if (confirm('⚠️ আপনি কি নিশ্চিত যে আপনি এই গেমটি ডিলিট করতে চান?')) {
-                alert(`🗑️ গেম ${gameId} ডিলিট করা হয়েছে!`);
-                // In real app, remove from database and refresh list
-            }
-        }
-
-        // ==================== USER MANAGEMENT ====================
-        function loadUsersManagement() {
-            const users = [
-                { id: 1, name: "Shakil Hasan", email: "shakil@example.com", balance: 15000, joinDate: "2024-01-15", status: "Active" },
-                { id: 2, name: "John Doe", email: "john@example.com", balance: 8500, joinDate: "2024-01-14", status: "Active" },
-                { id: 3, name: "Jane Smith", email: "jane@example.com", balance: 25000, joinDate: "2024-01-13", status: "Suspended" },
-                { id: 4, name: "Mike Johnson", email: "mike@example.com", balance: 5000, joinDate: "2024-01-12", status: "Active" }
-            ];
-
-            const usersHtml = users.map(user => `
-                <tr>
-                    <td>#${user.id}</td>
-                    <td>${user.name}</td>
-                    <td>${user.email}</td>
-                    <td>৳${user.balance.toLocaleString()}</td>
-                    <td>${user.joinDate}</td>
-                    <td>
-                        <span style="padding: 5px 10px; border-radius: 15px; font-size: 0.8rem; 
-                              background: ${user.status === 'Active' ? '#27ae60' : '#e74c3c'};">
-                            ${user.status}
-                        </span>
-                    </td>
-                    <td>
-                        <button class="btn btn-primary" onclick="viewUserDetails(${user.id})" style="padding: 8px 12px;">👁️</button>
-                        <button class="btn btn-warning" onclick="editUser(${user.id})" style="padding: 8px 12px;">✏️</button>
-                        <button class="btn btn-danger" onclick="suspendUser(${user.id})" style="padding: 8px 12px;">⏸️</button>
-                    </td>
-                </tr>
-            `).join('');
-
-            document.getElementById('usersList').innerHTML = usersHtml;
-        }
-
-        function exportUsers() {
-            alert('📊 ব্যবহারকারী রিপোর্ট এক্সপোর্ট করা হচ্ছে...');
-        }
-
-        function viewUserDetails(userId) {
-            alert(`👁️ ব্যবহারকারী #${userId} এর বিস্তারিত দেখানো হচ্ছে...`);
-        }
-
-        function editUser(userId) {
-            alert(`✏️ ব্যবহারকারী #${userId} সম্পাদনা করা হচ্ছে...`);
-        }
-
-        function suspendUser(userId) {
-            if (confirm('⚠️ আপনি কি এই ব্যবহারকারীকে সাসপেন্ড করতে চান?')) {
-                alert(`⏸️ ব্যবহারকারী #${userId} সাসপেন্ড করা হয়েছে!`);
-            }
-        }
-
-        // ==================== PAYMENT MANAGEMENT ====================
-        function loadPaymentsManagement() {
-            const payments = [
-                { id: "TXN001", user: "Shakil Hasan", amount: 5000, method: "bKash", status: "Completed", date: "2024-01-15 14:30" },
-                { id: "TXN002", user: "John Doe", amount: 2000, method: "Rocket", status: "Completed", date: "2024-01-15 13:15" },
-                { id: "TXN003", user: "Jane Smith", amount: 10000, method: "Nagad", status: "Pending", date: "2024-01-15 12:45" },
-                { id: "TXN004", user: "Mike Johnson", amount: 3000, method: "bKash", status: "Failed", date: "2024-01-15 11:20" }
-            ];
-
-            const paymentsHtml = payments.map(payment => `
-                <tr>
-                    <td>${payment.id}</td>
-                    <td>${payment.user}</td>
-                    <td>৳${payment.amount.toLocaleString()}</td>
-                    <td>${payment.method}</td>
-                    <td>
-                        <span style="padding: 5px 10px; border-radius: 15px; font-size: 0.8rem; 
-                              background: ${payment.status === 'Completed' ? '#27ae60' : payment.status === 'Pending' ? '#f39c12' : '#e74c3c'};">
-                            ${payment.status}
-                        </span>
-                    </td>
-                    <td>${payment.date}</td>
-                    <td>
-                        <button class="btn btn-primary" onclick="viewPaymentDetails('${payment.id}')" style="padding: 8px 12px;">👁️</button>
-                        ${payment.status === 'Pending' ? 
-                            `<button class="btn btn-success" onclick="approvePayment('${payment.id}')" style="padding: 8px 12px;">✅</button>` : 
-                            ''
-                        }
-                    </td>
-                </tr>
-            `).join('');
-
-            document.getElementById('paymentsList').innerHTML = paymentsHtml;
-        }
-
-        function showAllPayments() {
-            alert('💰 সব ট্রানজেকশন দেখানো হচ্ছে...');
-        }
-
-        function showPendingPayments() {
-            alert('💰 পেন্ডিং ট্রানজেকশন দেখানো হচ্ছে...');
-        }
-
-        function showCompletedPayments() {
-            alert('💰 সম্পন্ন ট্রানজেকশন দেখানো হচ্ছে...');
-        }
-
-        function viewPaymentDetails(txnId) {
-            alert(`👁️ ট্রানজেকশন ${txnId} এর বিস্তারিত দেখানো হচ্ছে...`);
-        }
-
-        function approvePayment(txnId) {
-            if (confirm(`✅ আপনি কি ট্রানজেকশন ${txnId} অ্যাপ্রুভ করতে চান?`)) {
-                alert(`✅ ট্রানজেকশন ${txnId} অ্যাপ্রুভ করা হয়েছে!`);
-            }
-        }
-
-        // ==================== UTILITY FUNCTIONS ====================
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-        }
+        // Add game form
+        document.getElementById('addGameForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('গেম সফলভাবে যোগ করা হয়েছে!');
+            this.reset();
+        });
 
         function logout() {
-            if (confirm('🚪 আপনি কি অ্যাডমিন প্যানেল থেকে লগআউট করতে চান?')) {
-                alert('👋 সফলভাবে লগআউট করা হয়েছে!');
+            if (confirm('আপনি কি লগআউট করতে চান?')) {
+                alert('লগআউট সফল!');
                 window.location.href = '../index.html';
             }
         }
 
-        function loadSectionData(section) {
-            // In real app, load data for specific section
-            console.log(`Loading data for: ${section}`);
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
-            }
-        }
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load initial data
+            console.log('Admin Panel Loaded');
+        });
     </script>
 </body>
 </html>
