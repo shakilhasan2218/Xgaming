@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XGaming Admin Panel</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --accent: #e74c3c;
+            --success: #27ae60;
+            --text: #ecf0f1;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--primary);
+            color: var(--text);
+        }
+        .admin-container {
+            display: flex;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 250px;
+            background: var(--secondary);
+            padding: 2rem 1rem;
+        }
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--accent);
+        }
+        .sidebar-menu {
+            list-style: none;
+        }
+        .sidebar-menu li {
+            margin-bottom: 1rem;
+        }
+        .sidebar-menu a {
+            color: var(--text);
+            text-decoration: none;
+            padding: 12px 15px;
+            display: block;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background: var(--accent);
+        }
+        .main-content {
+            flex: 1;
+            padding: 2rem;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .stat-card {
+            background: var(--secondary);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .stat-card h3 {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        .content-section {
+            background: var(--secondary);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #2c3e50;
+            color: var(--text);
+        }
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>XGaming Admin</h2>
+            <ul class="sidebar-menu">
+                <li><a href="#dashboard" class="active">📊 Dashboard</a></li>
+                <li><a href="#games">🎮 Game Management</a></li>
+                <li><a href="#users">👥 User Management</a></li>
+                <li><a href="#payments">💰 Payment Management</a></li>
+                <li><a href="#reports">📈 Reports</a></li>
+                <li><a href="../index.html">🏠 Back to Site</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Dashboard -->
+            <div id="dashboard" class="content-section">
+                <div class="header">
+                    <h1>Admin Dashboard</h1>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3 id="totalUsers">0</h3>
+                        <p>Total Users</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="totalGames">4</h3>
+                        <p>Total Games</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="totalRevenue">৳0</h3>
+                        <p>Total Revenue</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="activePlayers">0</h3>
+                        <p>Active Players</p>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="content-section">
+                    <h3>Recent Activity</h3>
+                    <div id="recentActivity">
+                        Loading activity data...
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Management -->
+            <div id="games" class="content-section" style="display: none;">
+                <h2>Game Management</h2>
+                
+                <!-- Add Game Form -->
+                <div style="background: var(--primary); padding: 1.5rem; border-radius: 10px; margin-bottom: 2rem;">
+                    <h3>Add New Game</h3>
+                    <form id="addGameForm">
+                        <div class="form-group">
+                            <label>Game Name (English)</label>
+                            <input type="text" id="gameName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Game Name (Bangla)</label>
+                            <input type="text" id="gameNameBn" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Game Type</label>
+                            <select id="gameType" required>
+                                <option value="">Select Type</option>
+                                <option value="SLOT">Slot</option>
+                                <option value="TABLE">Table Game</option>
+                                <option value="LIVE">Live Casino</option>
+                                <option value="SPORTS">Sports</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Provider</label>
+                            <input type="text" id="gameProvider" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Demo URL</label>
+                            <input type="url" id="gameDemoUrl" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Minimum Bet (৳)</label>
+                            <input type="number" id="gameMinBet" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Game</button>
+                    </form>
+                </div>
+
+                <!-- Games List -->
+                <h3>All Games</h3>
+                <div id="gamesList">
+                    Loading games...
+                </div>
+            </div>
+
+            <!-- User Management -->
+            <div id="users" class="content-section" style="display: none;">
+                <h2>User Management</h2>
+                <div id="usersList">
+                    Loading users...
+                </div>
+            </div>
+
+            <!-- Payment Management -->
+            <div id="payments" class="content-section" style="display: none;">
+                <h2>Payment Management</h2>
+                <div id="paymentsList">
+                    Loading payments...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation
+        document.querySelectorAll('.sidebar-menu a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Update active link
+                document.querySelectorAll('.sidebar-menu a').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show corresponding section
+                const targetId = this.getAttribute('href').substring(1);
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                document.getElementById(targetId).style.display = 'block';
+                
+                // Load section data
+                loadSectionData(targetId);
+            });
+        });
+
+        // Load dashboard data
+        async function loadDashboardData() {
+            try {
+                // Get users from localStorage
+                const users = getUsersFromStorage();
+                
+                document.getElementById('totalUsers').textContent = users.length;
+                document.getElementById('totalGames').textContent = '4';
+                document.getElementById('totalRevenue').textContent = '৳' + calculateTotalRevenue(users);
+                document.getElementById('activePlayers').textContent = users.filter(u => u.balance > 0).length;
+                
+                // Recent activity
+                const recentActivity = getRecentActivity(users);
+                document.getElementById('recentActivity').innerHTML = recentActivity.map(activity => 
+                    `<p>• ${activity}</p>`
+                ).join('');
+            } catch (error) {
+                console.error('Error loading dashboard:', error);
+            }
+        }
+
+        // Load games management
+        function loadGamesManagement() {
+            const games = getGamesFromStorage();
+            const gamesHtml = games.map(game => `
+                <div style="background: var(--primary); padding: 1rem; margin: 0.5rem 0; border-radius: 5px;">
+                    <strong>${game.name}</strong> - ${game.type} (${game.provider})
+                    <br>
+                    <small>Min Bet: ৳${game.minBet} | Demo: ${game.demoUrl}</small>
+                    <button onclick="editGame('${game.id}')" class="btn btn-primary" style="margin-left: 1rem;">Edit</button>
+                    <button onclick="deleteGame('${game.id}')" class="btn" style="background: #e74c3c; color: white; margin-left: 0.5rem;">Delete</button>
+                </div>
+            `).join('');
+            
+            document.getElementById('gamesList').innerHTML = gamesHtml;
+        }
+
+        // Add game form handler
+        document.getElementById('addGameForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const gameData = {
+                id: Date.now().toString(),
+                name: document.getElementById('gameName').value,
+                nameBn: document.getElementById('gameNameBn').value,
+                type: document.getElementById('gameType').value,
+                provider: document.getElementById('gameProvider').value,
+                demoUrl: document.getElementById('gameDemoUrl').value,
+                minBet: parseInt(document.getElementById('gameMinBet').value),
+                rating: 4.5
+            };
+            
+            // Save to localStorage
+            const games = getGamesFromStorage();
+            games.push(gameData);
+            localStorage.setItem('xgaming_games', JSON.stringify(games));
+            
+            alert('Game added successfully!');
+            this.reset();
+            loadGamesManagement();
+        });
+
+        // Utility functions
+        function getUsersFromStorage() {
+            // In a real app, this would be from your backend
+            // For demo, we'll create sample data
+            const sampleUsers = [
+                { name: 'John Doe', email: 'john@example.com', balance: 5000, joinDate: '2024-01-15' },
+                { name: 'Jane Smith', email: 'jane@example.com', balance: 2500, joinDate: '2024-01-14' },
+                { name: 'Mike Johnson', email: 'mike@example.com', balance: 10000, joinDate: '2024-01-13' }
+            ];
+            return sampleUsers;
+        }
+
+        function getGamesFromStorage() {
+            const savedGames = localStorage.getItem('xgaming_games');
+            if (savedGames) {
+                return JSON.parse(savedGames);
+            }
+            
+            // Default games
+            const defaultGames = [
+                {
+                    id: "1",
+                    name: "SWEET BONANZA",
+                    nameBn: "সুইট বোনান্জা",
+                    type: "SLOT",
+                    provider: "Pragmatic Play",
+                    demoUrl: "https://www.pragmaticplay.com/en/games/sweet-bonanza/",
+                    minBet: 10,
+                    rating: 4.8
+                },
+                {
+                    id: "2",
+                    name: "GATES OF OLYMPUS", 
+                    nameBn: "গেটস অফ অলিম্পাস",
+                    type: "SLOT",
+                    provider: "Pragmatic Play", 
+                    demoUrl: "https://www.pragmaticplay.com/en/gates-of-olympus/",
+                    minBet: 20,
+                    rating: 4.9
+                }
+            ];
+            
+            localStorage.setItem('xgaming_games', JSON.stringify(defaultGames));
+            return defaultGames;
+        }
+
+        function calculateTotalRevenue(users) {
+            return users.reduce((total, user) => total + (user.balance || 0), 0);
+        }
+
+        function getRecentActivity(users) {
+            return [
+                'New user registered: Shakil Hasan',
+                'Game added: Mega Fortune',
+                'Deposit completed: ৳5,000',
+                'Withdrawal processed: ৳2,000',
+                'User Mike Johnson played Blackjack'
+            ];
+        }
+
+        function loadSectionData(section) {
+            switch(section) {
+                case 'dashboard':
+                    loadDashboardData();
+                    break;
+                case 'games':
+                    loadGamesManagement();
+                    break;
+                case 'users':
+                    loadUsersManagement();
+                    break;
+                case 'payments':
+                    loadPaymentsManagement();
+                    break;
+            }
+        }
+
+        function loadUsersManagement() {
+            const users = getUsersFromStorage();
+            const usersHtml = users.map(user => `
+                <div style="background: var(--primary); padding: 1rem; margin: 0.5rem 0; border-radius: 5px;">
+                    <strong>${user.name}</strong> (${user.email})
+                    <br>
+                    <small>Balance: ৳${user.balance} | Joined: ${user.joinDate}</small>
+                    <button onclick="editUser('${user.email}')" class="btn btn-primary" style="margin-left: 1rem;">Edit</button>
+                </div>
+            `).join('');
+            
+            document.getElementById('usersList').innerHTML = usersHtml;
+        }
+
+        function loadPaymentsManagement() {
+            document.getElementById('paymentsList').innerHTML = `
+                <div style="background: var(--primary); padding: 1rem; margin: 0.5rem 0; border-radius: 5px;">
+                    <strong>bKash Deposit</strong> - ৳5,000 - Status: Completed
+                </div>
+                <div style="background: var(--primary); padding: 1rem; margin: 0.5rem 0; border-radius: 5px;">
+                    <strong>Rocket Deposit</strong> - ৳2,000 - Status: Completed
+                </div>
+                <div style="background: var(--primary); padding: 1rem; margin: 0.5rem 0; border-radius: 5px;">
+                    <strong>Withdrawal</strong> - ৳1,000 - Status: Pending
+                </div>
+            `;
+        }
+
+        // Initialize dashboard
+        loadDashboardData();
+    </script>
+</body>
+</html>
