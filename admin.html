@@ -1,417 +1,260 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XGaming - Advanced Admin Panel</title>
+    <title>XGaming Admin Panel</title>
     <style>
-        :root {
-            --primary: #2c3e50;
-            --secondary: #34495e;
-            --accent: #e74c3c;
-            --success: #27ae60;
-            --warning: #f39c12;
-            --info: #3498db;
-            --text: #ecf0f1;
-        }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         body {
-            font-family: 'Arial', sans-serif;
-            background: var(--primary);
-            color: var(--text);
+            font-family: Arial;
+            background: #1a1a2e;
+            color: white;
+            margin: 0;
+            padding: 0;
         }
-        
-        .admin-container {
-            display: flex;
-            min-height: 100vh;
-        }
-        
-        /* Sidebar */
         .sidebar {
             width: 250px;
-            background: var(--secondary);
-            padding: 2rem 1rem;
+            background: #16213e;
+            height: 100vh;
+            padding: 20px;
+            position: fixed;
         }
-        
-        .sidebar-header {
-            text-align: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--accent);
+        .main {
+            margin-left: 250px;
+            padding: 20px;
         }
-        
-        .sidebar-header h2 {
-            color: var(--accent);
-        }
-        
-        .sidebar-menu {
-            list-style: none;
-        }
-        
-        .sidebar-menu li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .sidebar-menu a {
-            color: var(--text);
+        .menu a {
+            display: block;
+            color: white;
             text-decoration: none;
-            padding: 12px 15px;
-            display: block;
+            padding: 15px;
+            margin: 5px 0;
+            background: #0f3460;
             border-radius: 5px;
-            transition: background 0.3s;
         }
-        
-        .sidebar-menu a:hover, .sidebar-menu a.active {
-            background: var(--accent);
+        .menu a:hover {
+            background: #e94560;
         }
-        
-        /* Main Content */
-        .main-content {
-            flex: 1;
-            padding: 2rem;
-            background: #1a2530;
-        }
-        
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--secondary);
-        }
-        
-        .header h1 {
-            color: var(--accent);
-        }
-        
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .stat-card {
-            background: var(--secondary);
-            padding: 1.5rem;
+        .card {
+            background: #16213e;
+            padding: 20px;
+            margin: 10px;
             border-radius: 10px;
+            display: inline-block;
+            width: 200px;
             text-align: center;
         }
-        
-        .stat-card h3 {
-            font-size: 2rem;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
+        .card h3 {
+            color: #e94560;
+            font-size: 2em;
+            margin: 10px 0;
         }
-        
-        /* Content Sections */
-        .content-section {
-            background: var(--secondary);
-            padding: 2rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-        }
-        
-        /* Forms */
-        .form-group {
-            margin-bottom: 1rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-        
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background: #2c3e50;
-            color: var(--text);
-        }
-        
-        /* Buttons */
-        .btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            margin: 5px;
-        }
-        
-        .btn-primary { background: var(--info); color: white; }
-        .btn-success { background: var(--success); color: white; }
-        .btn-danger { background: var(--accent); color: white; }
-        
-        /* Tables */
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 1rem;
+            margin-top: 20px;
         }
-        
         th, td {
             padding: 12px;
             text-align: left;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #0f3460;
         }
-        
         th {
-            background: var(--primary);
+            background: #0f3460;
+        }
+        .btn {
+            background: #e94560;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 2px;
         }
     </style>
 </head>
 <body>
-    <div class="admin-container">
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <div class="sidebar-header">
-                <h2>🎮 XGaming Admin</h2>
-            </div>
+    <div class="sidebar">
+        <h2>🎮 XGaming Admin</h2>
+        <div class="menu">
+            <a href="#dashboard">📊 Dashboard</a>
+            <a href="#games">🎮 Games</a>
+            <a href="#users">👥 Users</a>
+            <a href="#payments">💰 Payments</a>
+            <a href="../index.html">🏠 Main Site</a>
+        </div>
+    </div>
+
+    <div class="main">
+        <!-- Dashboard -->
+        <div id="dashboard">
+            <h1>Admin Dashboard</h1>
             
-            <ul class="sidebar-menu">
-                <li><a href="#dashboard" class="active">📊 ড্যাশবোর্ড</a></li>
-                <li><a href="#games">🎮 গেম ম্যানেজমেন্ট</a></li>
-                <li><a href="#users">👥 ব্যবহারকারী</a></li>
-                <li><a href="#payments">💰 পেমেন্ট</a></li>
-                <li><a href="../index.html">🏠 মেইন সাইট</a></li>
-            </ul>
+            <div class="card">
+                <p>Total Users</p>
+                <h3>1,247</h3>
+            </div>
+            <div class="card">
+                <p>Total Games</p>
+                <h3>156</h3>
+            </div>
+            <div class="card">
+                <p>Total Revenue</p>
+                <h3>৳2,45,670</h3>
+            </div>
+            <div class="card">
+                <p>Active Players</p>
+                <h3>89</h3>
+            </div>
+
+            <h3>Recent Activity</h3>
+            <table>
+                <tr>
+                    <th>Time</th>
+                    <th>Activity</th>
+                    <th>User</th>
+                </tr>
+                <tr>
+                    <td>2 min ago</td>
+                    <td>🎮 Game Played</td>
+                    <td>shakil_2218</td>
+                </tr>
+                <tr>
+                    <td>5 min ago</td>
+                    <td>💳 Deposit</td>
+                    <td>john_doe</td>
+                </tr>
+                <tr>
+                    <td>15 min ago</td>
+                    <td>👤 Registration</td>
+                    <td>new_user_92</td>
+                </tr>
+            </table>
         </div>
 
-        <!-- Main Content -->
-        <div class="main-content">
-            <!-- Header -->
-            <div class="header">
-                <h1>এডমিন ড্যাশবোর্ড</h1>
-                <button class="btn btn-danger" onclick="logout()">লগআউট</button>
-            </div>
+        <!-- Games Management -->
+        <div id="games" style="display:none">
+            <h1>Game Management</h1>
+            <button class="btn" onclick="addGame()">➕ Add Game</button>
+            
+            <table>
+                <tr>
+                    <th>Game Name</th>
+                    <th>Type</th>
+                    <th>Provider</th>
+                    <th>Actions</th>
+                </tr>
+                <tr>
+                    <td>Sweet Bonanza</td>
+                    <td>SLOT</td>
+                    <td>Pragmatic Play</td>
+                    <td>
+                        <button class="btn">Edit</button>
+                        <button class="btn" style="background:#c0392b">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Blackjack</td>
+                    <td>TABLE</td>
+                    <td>Evolution</td>
+                    <td>
+                        <button class="btn">Edit</button>
+                        <button class="btn" style="background:#c0392b">Delete</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
 
-            <!-- Dashboard -->
-            <div id="dashboard" class="content-section">
-                <h2>সিস্টেম ওভারভিউ</h2>
+        <!-- Users Management -->
+        <div id="users" style="display:none">
+            <h1>User Management</h1>
+            
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Balance</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                <tr>
+                    <td>Shakil Hasan</td>
+                    <td>shakil@example.com</td>
+                    <td>৳5,000</td>
+                    <td>Active</td>
+                    <td>
+                        <button class="btn">View</button>
+                        <button class="btn" style="background:#c0392b">Block</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>John Doe</td>
+                    <td>john@example.com</td>
+                    <td>৳2,500</td>
+                    <td>Active</td>
+                    <td>
+                        <button class="btn">View</button>
+                        <button class="btn" style="background:#c0392b">Block</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
 
-                <!-- Stats Grid -->
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <h3 id="totalUsers">1,247</h3>
-                        <p>মোট ব্যবহারকারী</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3 id="totalGames">156</h3>
-                        <p>সক্রিয় গেমস</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3 id="totalRevenue">৳2,45,670</h3>
-                        <p>মোট আয়</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3 id="activePlayers">89</h3>
-                        <p>সক্রিয় খেলোয়াড়</p>
-                    </div>
-                </div>
-
-                <!-- Recent Activity -->
-                <h3>সাম্প্রতিক কার্যকলাপ</h3>
-                <div id="recentActivity">
-                    <p>• নতুন ব্যবহারকারী: shakil_2218</p>
-                    <p>• গেম যোগ করা হয়েছে: Mega Fortune</p>
-                    <p>• ডিপোজিট সম্পন্ন: ৳5,000</p>
-                    <p>• উত্তোলন প্রক্রিয়াকরণ: ৳2,000</p>
-                </div>
-            </div>
-
-            <!-- Game Management -->
-            <div id="games" class="content-section" style="display: none;">
-                <h2>গেম ব্যবস্থাপনা</h2>
-                
-                <!-- Add Game Form -->
-                <div style="background: var(--primary); padding: 1.5rem; border-radius: 10px; margin-bottom: 2rem;">
-                    <h3>নতুন গেম যোগ করুন</h3>
-                    <form id="addGameForm">
-                        <div class="form-group">
-                            <label>গেম নাম</label>
-                            <input type="text" id="gameName" required>
-                        </div>
-                        <div class="form-group">
-                            <label>গেম ধরন</label>
-                            <select id="gameType" required>
-                                <option value="">নির্বাচন করুন</option>
-                                <option value="SLOT">স্লট গেম</option>
-                                <option value="TABLE">টেবিল গেম</option>
-                                <option value="LIVE">লাইভ ক্যাসিনো</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>প্রদানকারী</label>
-                            <input type="text" id="gameProvider" required>
-                        </div>
-                        <div class="form-group">
-                            <label>ডেমো URL</label>
-                            <input type="url" id="gameDemoUrl" required>
-                        </div>
-                        <button type="submit" class="btn btn-success">গেম যোগ করুন</button>
-                    </form>
-                </div>
-
-                <!-- Games List -->
-                <h3>সকল গেমস</h3>
-                <div id="gamesList">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>গেম নাম</th>
-                                <th>ধরন</th>
-                                <th>প্রদানকারী</th>
-                                <th>কার্যক্রম</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Sweet Bonanza</td>
-                                <td>SLOT</td>
-                                <td>Pragmatic Play</td>
-                                <td>
-                                    <button class="btn btn-primary">Edit</button>
-                                    <button class="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Gates of Olympus</td>
-                                <td>SLOT</td>
-                                <td>Pragmatic Play</td>
-                                <td>
-                                    <button class="btn btn-primary">Edit</button>
-                                    <button class="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- User Management -->
-            <div id="users" class="content-section" style="display: none;">
-                <h2>ব্যবহারকারী ব্যবস্থাপনা</h2>
-                <div id="usersList">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>নাম</th>
-                                <th>ইমেইল</th>
-                                <th>ব্যালেন্স</th>
-                                <th>স্ট্যাটাস</th>
-                                <th>কার্যক্রম</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Shakil Hasan</td>
-                                <td>shakil@example.com</td>
-                                <td>৳5,000</td>
-                                <td>Active</td>
-                                <td>
-                                    <button class="btn btn-primary">View</button>
-                                    <button class="btn btn-danger">Block</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>John Doe</td>
-                                <td>john@example.com</td>
-                                <td>৳2,500</td>
-                                <td>Active</td>
-                                <td>
-                                    <button class="btn btn-primary">View</button>
-                                    <button class="btn btn-danger">Block</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Payment Management -->
-            <div id="payments" class="content-section" style="display: none;">
-                <h2>পেমেন্ট ব্যবস্থাপনা</h2>
-                <div id="paymentsList">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ট্রানজেকশন আইডি</th>
-                                <th>ব্যবহারকারী</th>
-                                <th>পরিমাণ</th>
-                                <th>পদ্ধতি</th>
-                                <th>স্ট্যাটাস</th>
-                                <th>তারিখ</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>TXN001</td>
-                                <td>Shakil Hasan</td>
-                                <td>৳5,000</td>
-                                <td>bKash</td>
-                                <td>Completed</td>
-                                <td>2024-01-15</td>
-                            </tr>
-                            <tr>
-                                <td>TXN002</td>
-                                <td>John Doe</td>
-                                <td>৳2,000</td>
-                                <td>Rocket</td>
-                                <td>Completed</td>
-                                <td>2024-01-15</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+        <!-- Payments Management -->
+        <div id="payments" style="display:none">
+            <h1>Payment Management</h1>
+            
+            <table>
+                <tr>
+                    <th>Transaction ID</th>
+                    <th>User</th>
+                    <th>Amount</th>
+                    <th>Method</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>TXN001</td>
+                    <td>Shakil Hasan</td>
+                    <td>৳5,000</td>
+                    <td>bKash</td>
+                    <td>Completed</td>
+                </tr>
+                <tr>
+                    <td>TXN002</td>
+                    <td>John Doe</td>
+                    <td>৳2,000</td>
+                    <td>Rocket</td>
+                    <td>Completed</td>
+                </tr>
+            </table>
         </div>
     </div>
 
     <script>
         // Navigation
-        document.querySelectorAll('.sidebar-menu a').forEach(link => {
+        document.querySelectorAll('.menu a').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
+                const target = this.getAttribute('href').substring(1);
                 
-                // Update active link
-                document.querySelectorAll('.sidebar-menu a').forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Show corresponding section
-                const targetId = this.getAttribute('href').substring(1);
-                document.querySelectorAll('.content-section').forEach(section => {
-                    section.style.display = 'none';
+                // Hide all sections
+                document.querySelectorAll('.main > div').forEach(div => {
+                    div.style.display = 'none';
                 });
-                document.getElementById(targetId).style.display = 'block';
+                
+                // Show target section
+                document.getElementById(target).style.display = 'block';
             });
         });
 
-        // Add game form
-        document.getElementById('addGameForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('গেম সফলভাবে যোগ করা হয়েছে!');
-            this.reset();
-        });
-
-        function logout() {
-            if (confirm('আপনি কি লগআউট করতে চান?')) {
-                alert('লগআউট সফল!');
-                window.location.href = '../index.html';
+        function addGame() {
+            const name = prompt('Enter game name:');
+            if (name) {
+                alert('Game ' + name + ' added successfully!');
             }
         }
 
-        // Initialize dashboard
+        // Show dashboard by default
         document.addEventListener('DOMContentLoaded', function() {
-            // Load initial data
-            console.log('Admin Panel Loaded');
+            document.getElementById('dashboard').style.display = 'block';
         });
     </script>
 </body>
